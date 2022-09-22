@@ -2,7 +2,7 @@
 ## OBIETTIVO:
 Collegare più pc in vlan con collegamento access port-based
 
-## PROCEDIMENTO:
+## PROCEDIMENTO ACCESS:
 - Inizialmente abbiamo collegato 4 pc ad uno switch centrale e successivamente abbiamo impostato gli indirizzi ip 192.168.1.10/20/30/40 su ogni relativo pc.
 - Dopo ciò abbiamo verificato che ogni pc riuscisse ad inviare i pacchetti ad ogni pc della rete.
 - Fatto questo abbiamo impostato le vlan dando il nome e il VID (Robotici:10, Informatici:20) e successivamente impostati sui pc:
