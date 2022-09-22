@@ -1,4 +1,4 @@
-# ESERCIZIO VLAN CON COLLEGAMENTO ACCESS
+# ESERCIZIO VLAN CON COLLEGAMENTO ACCESS E TRUNK
 ## OBIETTIVO:
 Collegare più pc in vlan con collegamento access port-based
 
