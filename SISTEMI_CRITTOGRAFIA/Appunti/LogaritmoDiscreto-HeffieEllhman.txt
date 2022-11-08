@@ -1,0 +1,27 @@
+LOGARITMO DISCRETO
+Dato un numero primo N, un generatore A mod N e un numero B compreso tra 1 e N-1,
+risolvere il problema del logaritmo discreto vuol dire trovare una potenza di A il
+cui risultato sia B.
+
+ESEMPIO:
+2^x = 6	[mod 11]
+x dovrà essere compreso tra 0 e mod-2 -> [9] 
+
+
+DIFFIE-HELLMAN
+Crittografia e chiavi
+Alice ------- Bob
+	 |
+	 |
+	Eve
+
+Numero primo P e un generatore g mod P
+
+
+Alice					  Bob
+  |    (a) Numero Casuale tra 1 e p-2 (b)  |
+  |	(g^a)^b	 		 (g^b)^a   |
+  | 	g^a*b	 		 g^a*b	   |
+  |		 		  	   |
+  |		 		 	   |
+  
