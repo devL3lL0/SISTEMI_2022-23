@@ -1,0 +1,67 @@
+CRITTOGRAFIA RSA - ASIMMETRICA
+
+p, q [segreti] -> numeri primi [n = p*q]
+e [encription] = 3
+
+se m è il nostro messaggio come facciamo a cifrarlo?
+Eleviamo a e, m e teniamo il modulo n (c = m^e [mod n])(cifratura)
+m = (c^d [mod n])(decifratura)
+       |
+       v
+      Algoritmo di Euclide
+m non può essere condiviso sul canale pubblico perché non cifrato,
+al contrario di c.
+
+m^e*d = 1 [mod n]
+
+x -> numero intero positivo in cui il gcd(mcd)[x,n] = 1 (x,n=>coprimi)
+fi(n) = (p-1)(q-1)
+x^fi(n) = 1 [mod n]
+
+come trovare d?
+m^e*d = m [mod n]
+
+Se e*d fosse un multiplo di fi(n) allora la condizione sarebbe vera:
+	e*d = fi(n)*K+1 -> m^e*d = m^fi(n)*K+1 -> (m^(fi(n)*K)* m -> ((m^fi(n))^K) * m = [m]
+
+e*d + K*fi(n) = 1
+EQUAZIONE DIOFANTEA 
+
+ESEMPIO 1:
+p = 5, q = 11 -> n = 55
+e = 3
+
+chiave privata [e, p, q]
+chiave pubblica (fi(n)) -> (11-1)(5-1) = 24 => EULERO
+
+e*d + K*fi(n) = 1
+3*d + 40K = 1
+LA SCELTA DI PARAMETRI(5,7) NON PORTA A SOLUZIONE
+PERCHÈ L'MCD(3) NON DIVIDE L'1
+MENTRE (5, 11) Sì PERCHÈ L'MCD DIVIDE L'1
+
+3*(-13) + 40 *1 = 1
+40*3 -40*3 +3*(-13) + 40 *1 = 1
+
+3(-13+40) + 40(-3+1) = 1
+3(27) + 40(-2) = 1
+27 = d
+ 
+
+ESEMPIO 2:
+p = 3, q = 5 -> n = 15
+fi(n) = 8
+e = 7
+
+7*d + 8*K = 1
+
+7*(-1) + 8 * 1 = 1
+7*8 -7*8 + 7*(-1) + 8 * 1 = 1 -> 7*7 + 8(-6) = 1
+
+m = 2
+
+c = 2^7 [mod 15] = 8
+m = 8^7 [mod 15] = 2
+
+
+CRITTOGRAFIA ASIMMETRICA

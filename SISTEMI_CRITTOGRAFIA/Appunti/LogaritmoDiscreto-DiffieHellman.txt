@@ -25,3 +25,8 @@ Alice					  Bob
   |		 		  	   |
   |		 		 	   |
   
+
+Crittografia a chiave asimmetrica
+chiave pubblica-privata
+L'algoritmo dipende da due parametri, uno pubblico (può essere condiviso su un canale insicuro [chiave = g^a, b]),
+e uno privato (segreto, non condiviso [a, b]).
