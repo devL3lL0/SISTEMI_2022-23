@@ -1,0 +1,11 @@
+All'inizio della comunicazione è ecessario
+stabilire una chiave con cui scambiarsi i dati (chiave di SESSIONE).
+Per fare questo su un canale insicuro utilizziamo la crittografia ASIMMETRICA[DH, RSA]
+Una volta che lachave di sessione è stata scambiata
+possiamo iniziare lo scambio di dati effettivi tramite la crittografia SIMMETRICA[AES]
+
+		pila ISO/OSI
+		http
+protocollo TLS --->
+		TCP
+		IP

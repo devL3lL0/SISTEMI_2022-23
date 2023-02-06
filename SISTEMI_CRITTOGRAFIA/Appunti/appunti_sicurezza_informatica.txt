@@ -1,0 +1,112 @@
+SICUREZZA INFORMATICA  - 17/01/2023
+Metodologie e strumenti che permettono di PRESERVARE gli obiettivi stabiliti
+di CONFIDENZIALITÀ,  INTEGRITÀ, DISPONIBILITÀ dei dati
+
+TRIADE CIA -> Confidenciality (confidenzialità) Integrity (integrità ) and Availability (disponibilità) -> backup ESTERNI meglio se DELOCALIZZATI
+				|					|					|
+				v					 -> funzioni HASH		-> MODELLO CLIENT - SERVER   - >  Fragile (not ever AVAILABLE)
+			Crittografia Simmetrica o asimmetrica
+
+non RIPUDIABILITÀ e AUTENTICAZIONE
+
+L'obbiettivo è la protezione di dati 
+I dati non hanno valore se:
+		- sono sbagliati (Integrity)
+		- se non possono essere raggiunti (Availability)
+
+
+		     RUTER ------ RUTER  ---
+		  /	        \            /    	\
+COMPUTER -- 		 RUTER   --------  SERVER
+		      \		/	     \		/
+			RUTER -------- RUTER
+
+		|_________________________|
+			
+			Man in the Middle -> Se il pc "attaccante" riesce a posizionarsi
+						      fra client e server e controllare i dati spediti
+						      e ricevuti, abbiamo perso tutte le caratteristiche
+						      CIA, questo prende il nome di "Man in the Middle"
+
+Esistono situazioni in cui l'"attaccante" non è interessato a modificare i dati scambiati, ma solo a leggere:
+ad esempio per profilazione e tracciamento.
+
+ESEMPIO "Man in the middle" con Diffie-hellman:
+			
+		g^a		g^d
+	      ------>	       ------->
+ALICE		EVE		BOB
+    a			  c,d		   b
+	  <-------	      <-------
+	     g^c		g^b
+
+Ora EVE dispone di tutti e due i segreti rendendo la connessione non sicura infatti,
+Alice non è direttamente consapevole di parlare con EVE perche pensa di parlare con BOB
+dato che ha ottenuto una ripsosta, idem BOB
+
+24/01/23
+
+SSL/TLS
+Secure Socket Layer
+Transport Layer Socket
+
+Si posiziona a livello 6 della pila ISO/OSI
+il principale obiettivo del protocollo TLS è garantire privacy e integrità
+della comunicazione tra due applicazioni
+
+Protocolli che utilizzano il tls
+HTTPS -> HTTP Secure / over TLS
+FTP -> SFTP
+SSH
+
+HTTPS garantisce:
+ - Autenticità del sito e del relativo web server con cui stiamo comunicando
+ - Cifratura bidirezionale di dati tra client e server
+ - Protezione da osservatori passivi e da modifiche
+
+Il protocollo TLS è composto da 2 protocolli:
+ - Protocollo di Handshake -> utilizza la crottografia asimmetrica 
+					per stabilire una chiave di cifratura
+					condivisa tra client e server
+ - Record Protocol -> Utilizza la chiave condivisa per trasferire i
+			    dati in modo sicuro (crittografia simmetrica)
+
+
+PROTOCOLLO DI HANDSHAKE
+CLIENT 				   SERVER
+      |         __Client Hello__>           |
+      |         <_Server Hello__           |
+      |         <__Certificati___          |
+      |		    Server key               |
+      |		    Exchange                 |
+      |	             Certificate request  |
+      |	             Server Hello Done     |
+      |						 |
+      |          ___Certficati___>        |
+      |      <__Change Cipher spec__ |
+
+
+
+Client Hello -> Versione TLS/SSL
+		    Elenco di CIPHER SUITES 
+		    supportati        |
+					  v
+					 Insime di algoritmi che aiutano a rendere
+					 una connessione sicura
+
+Server Hello -> Conferma la versione del TLS/SSL e 
+		      un degli algoritmi proposti
+
+MASTER KEY -> Segreto comune finale dello scambio asimmetrico 
+
+SERVER KEY EXCHANGE
+Informazioni che il server invia al client che verranno utilizzate per ricavare la MASTER KEY
+CERTIFICATE  REQUEST e il certificato del client sono opzionali 
+
+CHANGE CIPHER SPEC tutti i messaggi che partono dal client successivi utilizeranno il
+cifrario con i parametri stabiliti
+
+il protocollo record utilizzerà la master KEY per lo scambio di dati
+
+Un protocollo di sicurezza a livello di applicazione, o comunque sopra al livello di trasporto,
+richiede una conifgurazione a livello di codice sorgente

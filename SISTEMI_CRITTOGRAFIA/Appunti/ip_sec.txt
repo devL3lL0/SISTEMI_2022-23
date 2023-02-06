@@ -1,0 +1,21 @@
+A differenza di SSL/TLS , IPSec implementa:
+-Autenticazione
+-Confidenzialità
+-Integrità
+a livello di rete (IP/Datagrammi)
+
+Modifichiamo il protocollo IP introducendo campi aggiuntivi.
+IPSec può funzionare in due modalità:
+
+-TRANSPORT (End-to-End)
+ gli indirizzi ip MITTENTE - DESTINATARIO non vengono modificati
+ IPSec garantisce condizioni di sicurezza sul contenuto dei messaggi
+
+-TUNNEL 
+Protezione di dati a livello di LAN, IPSec include l'intero datagramma  IP.
+Per l'instradamento e necessario aggiungere un nuovo indirizzo IP.
+
+	RETE 1 	----------	RETE 2 
+       /	     |     \
+  COMP  |	  COMP
+	   COMP
